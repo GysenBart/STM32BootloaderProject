@@ -1,0 +1,6 @@
+../Core/Src/bootloader.c:18:7:bootloader_uart_read_data	16	static
+../Core/Src/bootloader.c:42:6:bootloader_handle_flash_erase_cmd	16	static
+../Core/Src/bootloader.c:47:9:execute_flash_erase	48	static
+../Core/Src/bootloader.c:77:6:bootloader_handle_mem_write_cmd	24	static
+../Core/Src/bootloader.c:93:9:execute_mem_write	40	static
+../Core/Src/bootloader.c:111:6:ExitBootloader	24	static,ignoring_inline_asm

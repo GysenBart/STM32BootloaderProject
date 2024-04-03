@@ -1,0 +1,34 @@
+12:23:28 **** Incremental Build of configuration Debug for project Bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc -o "Bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\Bootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bootloader.elf
+ 
+arm-none-eabi-size   Bootloader.elf 
+arm-none-eabi-objdump -h -S  Bootloader.elf  > "Bootloader.list"
+arm-none-eabi-objcopy  -O ihex  Bootloader.elf  "Bootloader.hex"
+arm-none-eabi-objcopy  -O binary  Bootloader.elf  "Bootloader.bin"
+   text	   data	    bss	    dec	    hex	filename
+  15780	     20	   3724	  19524	   4c44	Bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bootloader.hex
+Finished building: Bootloader.bin
+ 
+ 
+Finished building: Bootloader.list
+ 
+12:23:33 **** Incremental Build of configuration Debug for project Bootloader ****
+make -j12 all 
+arm-none-eabi-size   Bootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15780	     20	   3724	  19524	   4c44	Bootloader.elf
+Finished building: default.size.stdout
+ 
+12:25:06 **** Incremental Build of configuration Debug for project Bootloader ****
+make -j12 all 
+arm-none-eabi-size   Bootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15780	     20	   3724	  19524	   4c44	Bootloader.elf
+Finished building: default.size.stdout
+ 
