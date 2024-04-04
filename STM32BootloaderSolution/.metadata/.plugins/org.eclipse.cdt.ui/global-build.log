@@ -1,6 +1,7 @@
-12:23:28 **** Incremental Build of configuration Debug for project Bootloader ****
+15:16:44 **** Incremental Build of configuration Debug for project Bootloader ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\Bootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Bootloader.elf
  
@@ -9,7 +10,7 @@ arm-none-eabi-objdump -h -S  Bootloader.elf  > "Bootloader.list"
 arm-none-eabi-objcopy  -O ihex  Bootloader.elf  "Bootloader.hex"
 arm-none-eabi-objcopy  -O binary  Bootloader.elf  "Bootloader.bin"
    text	   data	    bss	    dec	    hex	filename
-  15780	     20	   3724	  19524	   4c44	Bootloader.elf
+  15780	     20	  18524	  34324	   8614	Bootloader.elf
 Finished building: default.size.stdout
  
 Finished building: Bootloader.hex
@@ -18,17 +19,166 @@ Finished building: Bootloader.bin
  
 Finished building: Bootloader.list
  
-12:23:33 **** Incremental Build of configuration Debug for project Bootloader ****
+15:16:49 **** Incremental Build of configuration Debug for project Bootloader ****
 make -j12 all 
 arm-none-eabi-size   Bootloader.elf 
    text	   data	    bss	    dec	    hex	filename
-  15780	     20	   3724	  19524	   4c44	Bootloader.elf
+  15780	     20	  18524	  34324	   8614	Bootloader.elf
 Finished building: default.size.stdout
  
-12:25:06 **** Incremental Build of configuration Debug for project Bootloader ****
+15:24:31 **** Incremental Build of configuration Debug for project Bootloader ****
 make -j12 all 
 arm-none-eabi-size   Bootloader.elf 
    text	   data	    bss	    dec	    hex	filename
-  15780	     20	   3724	  19524	   4c44	Bootloader.elf
+  15780	     20	  18524	  34324	   8614	Bootloader.elf
 Finished building: default.size.stdout
+ 
+15:28:44 **** Incremental Build of configuration Debug for project Bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\Bootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bootloader.elf
+ 
+arm-none-eabi-size   Bootloader.elf 
+arm-none-eabi-objdump -h -S  Bootloader.elf  > "Bootloader.list"
+arm-none-eabi-objcopy  -O ihex  Bootloader.elf  "Bootloader.hex"
+arm-none-eabi-objcopy  -O binary  Bootloader.elf  "Bootloader.bin"
+   text	   data	    bss	    dec	    hex	filename
+  15780	     20	  18524	  34324	   8614	Bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bootloader.hex
+Finished building: Bootloader.bin
+ 
+ 
+Finished building: Bootloader.list
+ 
+15:34:59 **** Incremental Build of configuration Debug for project Bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+../Core/Src/bootloader.c:16:10: error: conflicting types for 'bl_rx_buffer'
+   16 | uint64_t bl_rx_buffer[BLRXLEN]; // Buffer that holds bootloader received data
+      |          ^~~~~~~~~~~~
+In file included from ../Core/Src/bootloader.c:8:
+../Core/Inc/bootloader.h:24:16: note: previous declaration of 'bl_rx_buffer' was here
+   24 | extern uint8_t bl_rx_buffer[BLRXLEN]; // Buffer that holds bootloader received data
+      |                ^~~~~~~~~~~~
+../Core/Src/bootloader.c: In function 'bootloader_uart_read_data':
+../Core/Src/bootloader.c:23:2: warning: 'memset' used with length equal to number of elements without multiplication by element size [-Wmemset-elt-size]
+   23 |  memset(bl_rx_buffer,0,15000);
+      |  ^~~~~~
+../Core/Src/bootloader.c:25:27: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+   25 |  HAL_UART_Receive(&huart3,bl_rx_buffer,1,100);
+      |                           ^~~~~~~~~~~~
+      |                           |
+      |                           uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:723:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+  723 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+../Core/Src/bootloader.c:27:27: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |  HAL_UART_Receive(&huart3,&bl_rx_buffer[1],rcv_len,1000);
+      |                           ^~~~~~~~~~~~~~~~
+      |                           |
+      |                           uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:723:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+  723 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+../Core/Src/bootloader.c:36:36: warning: passing argument 1 of 'bootloader_handle_mem_write_cmd' from incompatible pointer type [-Wincompatible-pointer-types]
+   36 |    bootloader_handle_mem_write_cmd(bl_rx_buffer);
+      |                                    ^~~~~~~~~~~~
+      |                                    |
+      |                                    uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Src/bootloader.c:8:
+../Core/Inc/bootloader.h:31:47: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+   31 | void bootloader_handle_mem_write_cmd(uint8_t *pBuffer);
+      |                                      ~~~~~~~~~^~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/bootloader.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:37:10 **** Incremental Build of configuration Debug for project Bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/bootloader.c: In function 'bootloader_uart_read_data':
+../Core/Src/bootloader.c:23:2: warning: 'memset' used with length equal to number of elements without multiplication by element size [-Wmemset-elt-size]
+   23 |  memset(bl_rx_buffer,0,15000);
+      |  ^~~~~~
+../Core/Src/bootloader.c:25:27: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+   25 |  HAL_UART_Receive(&huart3,bl_rx_buffer,1,100);
+      |                           ^~~~~~~~~~~~
+      |                           |
+      |                           uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:723:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+  723 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+../Core/Src/bootloader.c:27:27: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |  HAL_UART_Receive(&huart3,&bl_rx_buffer[1],rcv_len,1000);
+      |                           ^~~~~~~~~~~~~~~~
+      |                           |
+      |                           uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:723:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+  723 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+../Core/Src/bootloader.c:36:36: warning: passing argument 1 of 'bootloader_handle_mem_write_cmd' from incompatible pointer type [-Wincompatible-pointer-types]
+   36 |    bootloader_handle_mem_write_cmd(bl_rx_buffer);
+      |                                    ^~~~~~~~~~~~
+      |                                    |
+      |                                    uint64_t * {aka long long unsigned int *}
+In file included from ../Core/Src/bootloader.c:8:
+../Core/Inc/bootloader.h:32:47: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint64_t *' {aka 'long long unsigned int *'}
+   32 | void bootloader_handle_mem_write_cmd(uint8_t *pBuffer);
+      |                                      ~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "Bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\Bootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bootloader.elf
+ 
+arm-none-eabi-size   Bootloader.elf 
+arm-none-eabi-objdump -h -S  Bootloader.elf  > "Bootloader.list"
+arm-none-eabi-objcopy  -O ihex  Bootloader.elf  "Bootloader.hex"
+arm-none-eabi-objcopy  -O binary  Bootloader.elf  "Bootloader.bin"
+   text	   data	    bss	    dec	    hex	filename
+  15796	     20	 123528	 139344	  22050	Bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bootloader.hex
+Finished building: Bootloader.bin
+ 
+ 
+Finished building: Bootloader.list
+ 
+15:58:47 **** Incremental Build of configuration Debug for project Bootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Bootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\Bootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Bootloader.elf
+ 
+arm-none-eabi-size   Bootloader.elf 
+arm-none-eabi-objdump -h -S  Bootloader.elf  > "Bootloader.list"
+arm-none-eabi-objcopy  -O ihex  Bootloader.elf  "Bootloader.hex"
+arm-none-eabi-objcopy  -O binary  Bootloader.elf  "Bootloader.bin"
+   text	   data	    bss	    dec	    hex	filename
+  15772	     20	  18524	  34316	   860c	Bootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: Bootloader.bin
+Finished building: Bootloader.hex
+ 
+ 
+Finished building: Bootloader.list
  

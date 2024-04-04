@@ -10,8 +10,8 @@
 
 #include "stm32f4xx_hal.h"
 
-#define USERAPPLICATION_BASEADDRESS	0x08008000	// Base address of the user application
-#define BLRXLEN						200			// buffer size for the bootloader data
+#define USERAPPLICATION_BASEADDRESS	0x08010000		// Base address of the user application
+#define BLRXLEN						15000			// buffer size for the bootloader data
 
 //This command is used to mass erase or sector erase of the user flash .
 #define BL_FLASH_ERASE          0x56
@@ -22,6 +22,7 @@
 
 // External variables
 extern uint8_t bl_rx_buffer[BLRXLEN];	// Buffer that holds bootloader received data
+//extern uint64_t bl_rx_buffer[BLRXLEN];	// Buffer that holds bootloader received data
 
 // Exit the bootloader and jump to the user application
 void ExitBootloader();

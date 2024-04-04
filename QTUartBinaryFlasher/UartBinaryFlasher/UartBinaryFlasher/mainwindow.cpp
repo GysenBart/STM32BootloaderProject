@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QtSerialPort/QSerialPort>
+#include <QThread>
 
 
 #define UserAppSize 10
@@ -21,6 +22,18 @@ qint64 binLen = 0;
 QString SelectedComPort;
 QSerialPort serial;
 bool ComportAvailable = false;
+const char ErasePacket[4] = {0x04, 0x56, 0x04, 0x10};
+
+// Function to increment the address in a QByteArray
+void incrementAddress(QByteArray &packet, int incrementStart, int incrementEnd, int increment) {
+    // Increment the address bytes by the specified value
+    int carry = increment;
+    for (int i = incrementStart; i <= incrementEnd && carry > 0; ++i) {
+        int sum = packet[i] + carry;
+        packet[i] = sum & 0xFF; // Keep only the least significant byte
+        carry = sum >> 8; // Update the carry with the carry-over bits
+    }
+}
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -160,6 +173,14 @@ void MainWindow::on_SendBinary_clicked()
     QByteArray packetArray;
     packetArray.append(totalLen);
     packetArray.append(WriteCommand);
+    QByteArray eraseArray;
+    eraseArray.append(ErasePacket);
+    const int incrementStart = 2;
+    const int incrementEnd = 5;
+    const int incrementAmount = 0xFF;
+
+    serial.write(eraseArray);
+    QThread::msleep(100);
 
     for(i = 0; i < sizeof(StartAddr); i++)
     {
@@ -174,14 +195,22 @@ void MainWindow::on_SendBinary_clicked()
     {
         packetArray.append(dataArray[i]);
     }
-
-/*    for(i = 0; i < totalLen; i++)
+    /* What i have to do here:
+       every 255 times
+       change to totel length
+       set the write command
+       change the start address by incrementing with 0xFF
+       change the payloadlength*/
+    for(i = 0; i < packetArray.size(); i += 255)
     {
-        serial.write(&packetArray[i]);
-        serial.waitForBytesWritten(10);
+        QByteArray splitPacket = packetArray.mid(i, 255);
+        serial.write(splitPacket);
+        incrementAddress(packetArray, incrementStart, incrementEnd, incrementAmount);
+        QThread::msleep(10);
+
     }
-*/
-   serial.write(packetArray);
+
+   // serial.write(packetArray);
 }
 
 

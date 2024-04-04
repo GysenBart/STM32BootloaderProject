@@ -66,8 +66,8 @@ all: main-build
 main-build: UserApp.elf secondary-outputs
 
 # Tool invocations
-UserApp.elf UserApp.map: $(OBJS) $(USER_OBJS) D:\Bart\School\IoT\ 3\ '23\ -\ '24\Embedded\ Devices\ Advanced\Embedded\ software\ advanced\BootloaderWorkspace1\UserApp\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "UserApp.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\Embedded software advanced\BootloaderWorkspace1\UserApp\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UserApp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+UserApp.elf UserApp.map: $(OBJS) $(USER_OBJS) D:\Bart\School\IoT\ 3\ '23\ -\ '24\Embedded\ Devices\ Advanced\BootloaderProject\STM32BootloaderSolution\UserApp\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "UserApp.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UserApp\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UserApp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

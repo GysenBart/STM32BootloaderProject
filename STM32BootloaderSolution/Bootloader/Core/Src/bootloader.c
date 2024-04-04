@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
+//uint8_t bl_rx_buffer[BLRXLEN];	// Buffer that holds bootloader received data
 uint8_t bl_rx_buffer[BLRXLEN];	// Buffer that holds bootloader received data
 extern UART_HandleTypeDef huart3;
 
@@ -19,11 +20,11 @@ void  bootloader_uart_read_data(void)
 {
     uint8_t rcv_len=0;
 
-	memset(bl_rx_buffer,0,200);
+	memset(bl_rx_buffer,0,15000);
 
 	HAL_UART_Receive(&huart3,bl_rx_buffer,1,100);
 	rcv_len= bl_rx_buffer[0];
-	HAL_UART_Receive(&huart3,&bl_rx_buffer[1],rcv_len,1000);
+	HAL_UART_Receive(&huart3,&bl_rx_buffer[1],rcv_len,100);
 	switch(bl_rx_buffer[1])
 	{
 		case BL_FLASH_ERASE:
@@ -31,7 +32,7 @@ void  bootloader_uart_read_data(void)
 			execute_flash_erase(4 , 16);
 			break;
 		case BL_MEM_WRITE:
-			execute_flash_erase(4 , 16);
+			//execute_flash_erase(4 , 16);
 			bootloader_handle_mem_write_cmd(bl_rx_buffer);
 			break;
 		 default:

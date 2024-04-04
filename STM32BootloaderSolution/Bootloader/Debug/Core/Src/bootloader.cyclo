@@ -1,6 +1,6 @@
-bootloader.c:18:7:bootloader_uart_read_data	3
-bootloader.c:42:6:bootloader_handle_flash_erase_cmd	1
-bootloader.c:47:9:execute_flash_erase	2
-bootloader.c:77:6:bootloader_handle_mem_write_cmd	1
-bootloader.c:93:9:execute_mem_write	2
-bootloader.c:111:6:ExitBootloader	1
+bootloader.c:19:7:bootloader_uart_read_data	3
+bootloader.c:43:6:bootloader_handle_flash_erase_cmd	1
+bootloader.c:48:9:execute_flash_erase	2
+bootloader.c:78:6:bootloader_handle_mem_write_cmd	1
+bootloader.c:94:9:execute_mem_write	2
+bootloader.c:112:6:ExitBootloader	1
