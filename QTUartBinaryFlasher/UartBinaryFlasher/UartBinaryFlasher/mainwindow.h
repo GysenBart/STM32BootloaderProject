@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QByteArray uintToLittleEndian(quint32 value);
 
 private slots:
     void on_OpenBinFile_clicked();
@@ -39,6 +40,10 @@ private slots:
     void on_ShowBinaryFile_currentTextChanged(const QString &currentText);
 
     void on_ListPorts_activated(int index);
+
+
+
+    void on_EraseMem_clicked();
 
 private:
     Ui::MainWindow *ui;

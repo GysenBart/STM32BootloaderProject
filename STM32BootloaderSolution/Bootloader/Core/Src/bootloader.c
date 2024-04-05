@@ -20,11 +20,11 @@ void  bootloader_uart_read_data(void)
 {
     uint8_t rcv_len=0;
 
-	memset(bl_rx_buffer,0,15000);
+	memset(bl_rx_buffer,0,500);
 
-	HAL_UART_Receive(&huart3,bl_rx_buffer,1,100);
+	HAL_UART_Receive(&huart3,bl_rx_buffer,1,500);
 	rcv_len= bl_rx_buffer[0];
-	HAL_UART_Receive(&huart3,&bl_rx_buffer[1],rcv_len,100);
+	HAL_UART_Receive(&huart3,&bl_rx_buffer[1],rcv_len,500);
 	switch(bl_rx_buffer[1])
 	{
 		case BL_FLASH_ERASE:

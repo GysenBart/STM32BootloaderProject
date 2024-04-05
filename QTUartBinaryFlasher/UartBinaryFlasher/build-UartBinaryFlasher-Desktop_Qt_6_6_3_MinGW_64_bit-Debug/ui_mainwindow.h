@@ -38,6 +38,7 @@ public:
     QProgressBar *SendingProgress;
     QPushButton *Exit;
     QListWidget *ShowSendingBinary;
+    QPushButton *EraseMem;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -74,7 +75,7 @@ public:
         ClosePort->setGeometry(QRect(200, 200, 141, 31));
         SendBinary = new QPushButton(centralwidget);
         SendBinary->setObjectName("SendBinary");
-        SendBinary->setGeometry(QRect(40, 250, 301, 31));
+        SendBinary->setGeometry(QRect(200, 250, 141, 31));
         SendingProgress = new QProgressBar(centralwidget);
         SendingProgress->setObjectName("SendingProgress");
         SendingProgress->setGeometry(QRect(40, 290, 301, 31));
@@ -85,10 +86,13 @@ public:
         ShowSendingBinary = new QListWidget(centralwidget);
         ShowSendingBinary->setObjectName("ShowSendingBinary");
         ShowSendingBinary->setGeometry(QRect(360, 160, 791, 211));
+        EraseMem = new QPushButton(centralwidget);
+        EraseMem->setObjectName("EraseMem");
+        EraseMem->setGeometry(QRect(40, 250, 151, 29));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1195, 22));
+        menubar->setGeometry(QRect(0, 0, 1195, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -110,6 +114,7 @@ public:
         ClosePort->setText(QCoreApplication::translate("MainWindow", "ClosePort", nullptr));
         SendBinary->setText(QCoreApplication::translate("MainWindow", "SendBinary", nullptr));
         Exit->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
+        EraseMem->setText(QCoreApplication::translate("MainWindow", "EraseMemory", nullptr));
     } // retranslateUi
 
 };

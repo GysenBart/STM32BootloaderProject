@@ -16,8 +16,9 @@
 qint8 WriteCommand = 0x57;
 bool IsBinPresent = false;
 QFile Binary;
-const char StartAddr[4] = {0x00, 0x00, 0x01, 0x08};
-QByteArray dataArray;
+//const char StartAddr[4] = {0x00, 0x00, 0x01, 0x08};
+
+QByteArray Payload;
 qint64 binLen = 0;
 QString SelectedComPort;
 QSerialPort serial;
@@ -25,15 +26,15 @@ bool ComportAvailable = false;
 const char ErasePacket[4] = {0x04, 0x56, 0x04, 0x10};
 
 // Function to increment the address in a QByteArray
-void incrementAddress(QByteArray &packet, int incrementStart, int incrementEnd, int increment) {
-    // Increment the address bytes by the specified value
-    int carry = increment;
-    for (int i = incrementStart; i <= incrementEnd && carry > 0; ++i) {
-        int sum = packet[i] + carry;
-        packet[i] = sum & 0xFF; // Keep only the least significant byte
-        carry = sum >> 8; // Update the carry with the carry-over bits
-    }
-}
+// void incrementAddress(QByteArray &packet, int incrementStart, int incrementEnd, int increment) {
+//     // Increment the address bytes by the specified value
+//     int carry = increment;
+//     for (int i = incrementStart; i <= incrementEnd && carry > 0; ++i) {
+//         int sum = packet[i] + carry;
+//         packet[i] = sum & 0xFF; // Keep only the least significant byte
+//         carry = sum >> 8; // Update the carry with the carry-over bits
+//     }
+// }
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -87,9 +88,9 @@ void MainWindow::on_ReadBinFile_clicked()
             {
                 qDebug() << "Failed to read data from file";
             }
-            dataArray.append(buffer, bytesRead);
+            Payload.append(buffer, bytesRead);
         }
-        binLen = dataArray.size();
+        binLen = Payload.size();
         QString strLen = QString::number(binLen);
         ui->ShowBinaryFile->addItem("The length of the binary:");
         ui->ShowBinaryFile->addItem(strLen);
@@ -162,55 +163,61 @@ void MainWindow::on_ClosePort_clicked()
     serial.close();
 }
 
+// Function to convert a uint32 value to a little-endian byte array
+QByteArray MainWindow::uintToLittleEndian(quint32 value) {
+    QByteArray byteArray;
+    byteArray.append((value) & 0xFF);
+    byteArray.append((value >> 8) & 0xFF);
+    byteArray.append((value >> 16) & 0xFF);
+    byteArray.append((value >> 24) & 0xFF);
+    return byteArray;
+}
 
 void MainWindow::on_SendBinary_clicked()
 {
     int i;
-    qint8 lenToAdd = 6;
-    qint64 testlen = binLen;
-//    qint64 totalLen = lenToAdd + binLen;
-    qint64 totalLen = lenToAdd + testlen;
+    int j;
+    uint8_t lenToAdd = 6;
+    uint8_t PayLen = 50;
+    uint8_t totalLen = lenToAdd + PayLen;
     QByteArray packetArray;
-    packetArray.append(totalLen);
-    packetArray.append(WriteCommand);
-    QByteArray eraseArray;
-    eraseArray.append(ErasePacket);
-    const int incrementStart = 2;
-    const int incrementEnd = 5;
-    const int incrementAmount = 0xFF;
+    QByteArray addrArray;
 
-    serial.write(eraseArray);
-    QThread::msleep(100);
+    quint32 address = 0x08010000;
 
-    for(i = 0; i < sizeof(StartAddr); i++)
-    {
-        packetArray.append(StartAddr[i]);
-    }
-
-//    packetArray.append(binLen);
-
-    packetArray.append(testlen);
-
-    for(i = 0; i < testlen; i++)
-    {
-        packetArray.append(dataArray[i]);
-    }
     /* What i have to do here:
-       every 255 times
-       change to totel length
-       set the write command
-       change the start address by incrementing with 0xFF
-       change the payloadlength*/
-    for(i = 0; i < packetArray.size(); i += 255)
+       every 200 times
+       create the packet with first part (length, writeCommand, addr, payloadlength)
+       add everytime the next 200 items
+       send the packet
+*/
+    int binIndex = 50;
+
+    for(i = 0; i < binLen; i += PayLen)
     {
-        QByteArray splitPacket = packetArray.mid(i, 255);
-        serial.write(splitPacket);
-        incrementAddress(packetArray, incrementStart, incrementEnd, incrementAmount);
+        packetArray.clear();
+        packetArray.append(totalLen);
+        packetArray.append(WriteCommand);
+        addrArray = uintToLittleEndian(address);
+        packetArray.append(addrArray);
+        packetArray.append(PayLen);
+
+        for(j = i; j < binIndex && j < binLen; j++)
+        {
+            packetArray.append(Payload[j]);
+        }
+
+        serial.write(packetArray);
+        serial.flush();
         QThread::msleep(10);
+        serial.waitForBytesWritten(100);
+        binIndex += 50;
+        address += 50;
+
 
     }
 
-   // serial.write(packetArray);
+//    serial.write(packetArray);
 }
 
 
@@ -235,4 +242,12 @@ void MainWindow::on_ShowBinaryFile_currentTextChanged(const QString &currentText
 
 
 
+
+
+void MainWindow::on_EraseMem_clicked()
+{
+    QByteArray eraseArray;
+    eraseArray.append(ErasePacket);
+    serial.write(eraseArray);
+}
 
