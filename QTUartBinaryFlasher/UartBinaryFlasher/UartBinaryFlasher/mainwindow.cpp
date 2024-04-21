@@ -190,6 +190,8 @@ void MainWindow::on_SendBinary_clicked()
        create the packet with first part (length, writeCommand, addr, payloadlength)
        add everytime the next 200 items
        send the packet
+
+       TODO set up a CRC control and two way verification
 */
     int binIndex = 50;
 

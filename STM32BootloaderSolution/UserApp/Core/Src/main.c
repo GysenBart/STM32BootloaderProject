@@ -52,6 +52,8 @@ UART_HandleTypeDef huart3;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
+uint32_t TickTim;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -103,7 +105,7 @@ int main(void)
   MX_USART3_UART_Init();
 //  MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,8 +113,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-	  HAL_Delay(100);
+	  if(TickTim > 500)
+	  {
+		  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+		  HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+		  TickTim = 0;
+	  }
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -336,7 +343,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_IncTick(void)
+{
+  uwTick += uwTickFreq;
+  TickTim++;
+}
 /* USER CODE END 4 */
 
 /**
