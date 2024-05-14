@@ -41,7 +41,7 @@
 #endif /* WITH_RTOS */
 
 /* USER CODE BEGIN 0 */
-
+ void udp_receive_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
 /* USER CODE END 0 */
 
 /* Global Variables ----------------------------------------------------------*/
@@ -58,7 +58,7 @@ void MX_LWIP_Init(void);
  *   - Handle timeouts if NO_SYS_NO_TIMERS not set
  */
 void MX_LWIP_Process(void);
-void udp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
+
 /* USER CODE END 1 */
 #endif /* WITH_RTOS */
 

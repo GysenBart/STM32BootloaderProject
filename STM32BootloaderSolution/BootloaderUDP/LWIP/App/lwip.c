@@ -66,7 +66,8 @@ static struct udp_pcb *upcb;
   * @param port the remote port from which the packet was received
   * @retval None
   */
-void udp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
+
+void udp_receive_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
 {
   // Process datagram here (non-blocking code)
   HAL_UART_Transmit(&huart3, (uint8_t*)p->payload, p->len, HAL_MAX_DELAY);
@@ -130,7 +131,7 @@ void MX_LWIP_Init(void)
   /* 3. Set a receive callback for the upcb */
   if(err == ERR_OK)
   {
-	  udp_recv(upcb, udp_recv_callback, NULL);
+	  udp_recv(upcb, udp_receive_callback, NULL);
   }
   else
   {
@@ -213,7 +214,6 @@ static void ethernet_link_status_updated(struct netif *netif)
 /* USER CODE END 5 */
   }
   else /* netif is down */
-	  HAL_UART_Transmit(&huart3, (uint8_t*)"Link down.\n", 11, HAL_MAX_DELAY);
   {
 /* USER CODE BEGIN 6 */
 /* USER CODE END 6 */

@@ -10,8 +10,9 @@
 	</section>
 	<section name="PDOMSearchPage">
 		<item key="caseSensitive" value="false"/>
-		<item key="searchFlags" value="23"/>
+		<item key="searchFlags" value="39"/>
 		<list key="previousPatterns">
+			<item value="udp_recv_callback"/>
 			<item value="dhcp"/>
 			<item value="dhcpc"/>
 		</list>

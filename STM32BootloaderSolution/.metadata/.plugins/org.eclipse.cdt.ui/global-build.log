@@ -1,21 +1,14 @@
-20:31:16 **** Incremental Build of configuration Debug for project BootloaderUDP ****
+21:26:54 **** Incremental Build of configuration Debug for project UDPBootloader ****
 make -j12 all 
 arm-none-eabi-gcc "../LWIP/App/lwip.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"LWIP/App/lwip.d" -MT"LWIP/App/lwip.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "LWIP/App/lwip.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-In file included from ../LWIP/App/lwip.c:22:
-../LWIP/App/lwip.h:61:42: warning: 'struct udp_pcb' declared inside parameter list will not be visible outside of this definition or declaration
-   61 | void udp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
-      |                                          ^~~~~~~
-../LWIP/App/lwip.c:69:6: error: conflicting types for 'udp_recv_callback'; have 'void(void *, struct udp_pcb *, struct pbuf *, const ip_addr_t *, u16_t)' {aka 'void(void *, struct udp_pcb *, struct pbuf *, const struct ip4_addr *, short unsigned int)'}
-   69 | void udp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
-      |      ^~~~~~~~~~~~~~~~~
-../LWIP/App/lwip.h:61:6: note: previous declaration of 'udp_recv_callback' with type 'void(void *, struct udp_pcb *, struct pbuf *, const ip_addr_t *, u16_t)' {aka 'void(void *, struct udp_pcb *, struct pbuf *, const struct ip4_addr *, short unsigned int)'}
-   61 | void udp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
-      |      ^~~~~~~~~~~~~~~~~
-make: *** [LWIP/App/subdir.mk:19: LWIP/App/lwip.o] Error 1
-make: *** Waiting for unfinished jobs....
-In file included from ../Core/Src/main.c:21:
-../LWIP/App/lwip.h:61:42: warning: 'struct udp_pcb' declared inside parameter list will not be visible outside of this definition or declaration
-   61 | void udp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
-      |                                          ^~~~~~~
-"make -j12 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  58152	    132	  35460	  93744	  16e30	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
