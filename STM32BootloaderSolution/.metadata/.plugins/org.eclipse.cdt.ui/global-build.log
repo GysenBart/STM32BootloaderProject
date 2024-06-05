@@ -1,13 +1,218 @@
-21:26:54 **** Incremental Build of configuration Debug for project UDPBootloader ****
+09:39:43 **** Incremental Build of configuration Debug for project UDPBootloader ****
 make -j12 all 
-arm-none-eabi-gcc "../LWIP/App/lwip.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"LWIP/App/lwip.d" -MT"LWIP/App/lwip.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "LWIP/App/lwip.o"
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+../Core/Src/bootloader.c: In function 'crc_response':
+../Core/Src/bootloader.c:59:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   59 |         HAL_UART_Transmit(&huart3, &crcArray, sizeof(crcArray), HAL_MAX_DELAY);
+      |                                    ^~~~~~~~~
+      |                                    |
+      |                                    uint8_t (*)[2] {aka unsigned char (*)[2]}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:414,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t (*)[2]' {aka 'unsigned char (*)[2]'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
 arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: UDPBootloader.elf
  
 arm-none-eabi-size  UDPBootloader.elf 
 arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
    text	   data	    bss	    dec	    hex	filename
-  58152	    132	  35460	  93744	  16e30	UDPBootloader.elf
+  62508	    644	  35596	  98748	  181bc	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+09:40:21 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-size  UDPBootloader.elf 
+   text	   data	    bss	    dec	    hex	filename
+  62508	    644	  35596	  98748	  181bc	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+10:06:40 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+../Core/Src/bootloader.c: In function 'crc_response':
+../Core/Src/bootloader.c:59:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   59 |         HAL_UART_Transmit(&huart3, &crcArray, sizeof(crcArray), HAL_MAX_DELAY);
+      |                                    ^~~~~~~~~
+      |                                    |
+      |                                    uint8_t (*)[2] {aka unsigned char (*)[2]}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:414,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t (*)[2]' {aka 'unsigned char (*)[2]'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  62512	    644	  35596	  98752	  181c0	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+11:14:28 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+../Core/Src/bootloader.c: In function 'crc_response':
+../Core/Src/bootloader.c:59:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   59 |         HAL_UART_Transmit(&huart3, &crcArray, sizeof(crcArray), 500);
+      |                                    ^~~~~~~~~
+      |                                    |
+      |                                    uint8_t (*)[2] {aka unsigned char (*)[2]}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:414,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t (*)[2]' {aka 'unsigned char (*)[2]'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  62512	    644	  35596	  98752	  181c0	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+11:37:09 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+../Core/Src/bootloader.c: In function 'crc_response':
+../Core/Src/bootloader.c:60:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   60 |         HAL_UART_Transmit(&huart3, &crcArray, sizeof(crcArray), 500);
+      |                                    ^~~~~~~~~
+      |                                    |
+      |                                    uint8_t (*)[0] {aka unsigned char (*)[]}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:414,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t (*)[0]' {aka 'unsigned char (*)[]'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  62516	    644	  35596	  98756	  181c4	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+11:37:30 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:181:13: warning: 'MX_CRC_Init' defined but not used [-Wunused-function]
+  181 | static void MX_CRC_Init(void)
+      |             ^~~~~~~~~~~
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  61680	    644	  35596	  97920	  17e80	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+11:49:12 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+../Core/Src/bootloader.c: In function 'crc_response':
+../Core/Src/bootloader.c:60:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+   60 |         HAL_UART_Transmit(&huart3, &crcArray, sizeof(crcArray), 0);
+      |                                    ^~~~~~~~~
+      |                                    |
+      |                                    uint8_t (*)[0] {aka unsigned char (*)[]}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:414,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/bootloader.h:11,
+                 from ../Core/Src/bootloader.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t (*)[0]' {aka 'unsigned char (*)[]'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  61680	    644	  35596	  97920	  17e80	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+13:44:05 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  61680	    644	  35596	  97920	  17e80	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+13:45:04 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  61680	    644	  35596	  97920	  17e80	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+13:46:53 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  61680	    644	  35596	  97920	  17e80	UDPBootloader.elf
+Finished building: default.size.stdout
+ 
+Finished building: UDPBootloader.list
+ 
+14:47:42 **** Incremental Build of configuration Debug for project UDPBootloader ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/bootloader.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bootloader.d" -MT"Core/Src/bootloader.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bootloader.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:181:13: warning: 'MX_CRC_Init' defined but not used [-Wunused-function]
+  181 | static void MX_CRC_Init(void)
+      |             ^~~~~~~~~~~
+arm-none-eabi-gcc -o "UDPBootloader.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Bart\School\IoT 3 '23 - '24\Embedded Devices Advanced\BootloaderProject\STM32BootloaderSolution\UDPBootloader\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UDPBootloader.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UDPBootloader.elf
+ 
+arm-none-eabi-size  UDPBootloader.elf 
+arm-none-eabi-objdump -h -S UDPBootloader.elf  > "UDPBootloader.list"
+   text	   data	    bss	    dec	    hex	filename
+  62516	    644	  35596	  98756	  181c4	UDPBootloader.elf
 Finished building: default.size.stdout
  
 Finished building: UDPBootloader.list

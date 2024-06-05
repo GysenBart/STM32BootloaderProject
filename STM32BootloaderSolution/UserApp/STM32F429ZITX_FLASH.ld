@@ -49,8 +49,9 @@ MEMORY
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 192K
   /*FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 2048K*/
   
-  /*User application in sector 4 bank 1*/
-  FLASH    (rx)    : ORIGIN = 0x8010000,   LENGTH = 1984K
+  /*User application in sector 5 bank 1*/
+  /*FLASH    (rx)    : ORIGIN = 0x8010000,   LENGTH = 1984K*/
+  FLASH    (rx)    : ORIGIN = 0x8020000,   LENGTH = 1920K
 }
 
 /* Sections */

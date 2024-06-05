@@ -739,7 +739,7 @@ int main(void)
  80006e8:	f001 fd5c 	bl	80021a4 <HAL_GPIO_ReadPin>
  80006ec:	4603      	mov	r3, r0
  80006ee:	607b      	str	r3, [r7, #4]
-    /* USER CODE END WHILE */
+
 	  /* Check button on rising edge */
 	  if ((btn_state != btn_previous_state)&&(btn_state == 1))
  80006f0:	687a      	ldr	r2, [r7, #4]

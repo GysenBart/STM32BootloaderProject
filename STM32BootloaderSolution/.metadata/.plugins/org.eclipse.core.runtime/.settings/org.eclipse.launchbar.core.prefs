@@ -1,7 +1,11 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Bootloader Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UserApp,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BootloaderUDP Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UDPBootloader
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UserApp,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Bootloader Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UDPBootloader
 eclipse.preferences.version=1
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Bootloader\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Bootloader\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Bootloader\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UDPBootloader/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UDPBootloader/activeLaunchTarget=null\:---
+org.eclipse.launchbar.core.descriptorType.default\:UDPBootloader\ Debug/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:UDPBootloader\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

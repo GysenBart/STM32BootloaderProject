@@ -18,10 +18,10 @@
 		</list>
 	</section>
 	<section name="WorkbenchPreferenceDialog">
-		<item key="DIALOG_X_ORIGIN" value="2258"/>
-		<item key="DIALOG_Y_ORIGIN" value="346"/>
-		<item key="DIALOG_WIDTH" value="860"/>
-		<item key="DIALOG_HEIGHT" value="852"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
+		<item key="DIALOG_X_ORIGIN" value="844"/>
+		<item key="DIALOG_Y_ORIGIN" value="351"/>
+		<item key="DIALOG_WIDTH" value="674"/>
+		<item key="DIALOG_HEIGHT" value="589"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 </section>

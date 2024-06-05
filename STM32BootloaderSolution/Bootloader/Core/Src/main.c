@@ -115,7 +115,7 @@ int main(void)
 
 	  btn_previous_state = btn_state;
 	  btn_state = HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin);
-    /* USER CODE END WHILE */
+
 	  /* Check button on rising edge */
 	  if ((btn_state != btn_previous_state)&&(btn_state == 1))
 	  {
@@ -125,6 +125,8 @@ int main(void)
 	  {
 		  bootloader_uart_read_data();
 	  }
+
+    /* USER CODE END WHILE */
 
 
     /* USER CODE BEGIN 3 */
