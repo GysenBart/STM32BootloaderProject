@@ -38,9 +38,9 @@ The Qt Project with UI is a graphical user interface (GUI) application developed
 - Erasing firmware UART/UDP
 - Send update firmware UART/UDP
 
-### UART example
+### UDP example
 ![BootloaderUDP](https://github.com/GysenBart/STM32BootloaderProject/assets/46839017/8f3d6392-b692-4311-a47b-492b88dab540)
 
-### UDP example
+### UART example
 ![BootloaderUART](https://github.com/GysenBart/STM32BootloaderProject/assets/46839017/ddeba12b-ffc2-4d41-b53c-c26364e5c5fe)
 
