@@ -26,6 +26,7 @@ PACKET: 0x57 ADDR PAYLOADLENGTH PAYLOAD
 ## UserApp
 
 Just a example application for testing.
+Start address of the user application must be 0x08020000!!!
 
 ## QTUartBinaryFlasher
 
